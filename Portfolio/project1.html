@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<head>
+	<title>Alex Davis' DS Portfolio</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+
+				<!-- Header -->
+				<header id="header">
+					<a href="index.html" class="logo"><strong>Portfolio</strong> </a>
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/alexdavis2020/" class="icon brands fa-linkedin"><span
+									class="label">fa-linkedin</span></a></li>
+						<li><a href="https://github.com/adavis081" class="icon brands fa-github"><span
+									class="label">fa-github</span></a></li>
+					</ul>
+				</header>
+
+				<!-- Content -->
+
+				<header class="main">
+					<h1>Wine Reviews</h1>
+				</header>
+
+
+
+				<!-- Content -->
+				<h2 id="content">Project Overview</h2>
+				<p><span class="image left"><img src="images\wine.jpg" alt="" /></span>This project is an exploratory
+					analysis of a dataset containing reviews of thousands of wine. Wines span across various countries,
+					regions, vineyards, and varietals. Lastly, every wine is given a score from (0-100). This project
+					uses statistical analysis, natural language
+					processing, and data visualization to explore the driving facotrs of a wine's score.</p>
+
+
+				<br />
+				<section>
+					<h4>Data Description</h4>
+					<div class="table-wrapper">
+						<table class="alt">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Description</th>
+									<th>Type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>ID</td>
+									<td>A unique identifier</td>
+									<td>Int</td>
+								</tr>
+								<tr>
+									<td>Country</td>
+									<td>Country where the wine was produced</td>
+									<td>Catergorical</td>
+								</tr>
+								<tr>
+									<td>Description</td>
+									<td>A description of the wine by the reviewer</td>
+									<td>String</td>
+								</tr>
+								<tr>
+									<td>Points</td>
+									<td>The amount of points the reviewer gave the wine</td>
+									<td>Int</td>
+								</tr>
+								<tr>
+									<td>Price</td>
+									<td>Price of the wine</td>
+									<td>Int</td>
+								</tr>
+								<tr>
+									<td>Province</td>
+									<td>Province where the wine was produced</td>
+									<td>Catergorical</td>
+								</tr>
+								<tr>
+									<td>Region</td>
+									<td>Region where the wine was produced</td>
+									<td>String</td>
+								</tr>
+								<tr>
+									<td>Taster Name</td>
+									<td>Name of the reviewer</td>
+									<td>String</td>
+								</tr>
+								<tr>
+									<td>Taster Twitter</td>
+									<td>Twitter handle of the reviewer</td>
+									<td>String</td>
+								</tr>
+								<tr>
+									<td>Title</td>
+									<td>Title of the wine</td>
+									<td>String</td>
+								</tr>
+								<tr>
+									<td>Variety</td>
+									<td>The type of wine</td>
+									<td>Catergorical</td>
+								</tr>
+								<tr>
+									<td>Winery</td>
+									<td>Winery that produced the wine</td>
+									<td>String</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</section>
+
+
+				<hr class="major" />
+
+				<h3>Results, Insights, and Thoughts</h3>
+				<div class="row">
+					<div class="content">
+
+
+						<ol>
+							<li><strong>Data Cleaning:</strong> Considering that we want to investigate
+								how certain factors impact rating, we want to make sure these variables
+								are clean and filled. Some variables only were missing a few values. With
+								around 130K observations, these could simply be dropped.<br> <br />
+								However, price was missing a significant
+								amount of values. When checking the distribution of price, it was heavily skewed as some
+								wines are very expensive. These were considered to be outliers, and dropped to give
+								price a normal distribution. We can then fill the missing values with the average price.
+							</li>
+							<br />
+							<li><strong>Price vs. Rating:</strong> We use statistical analysis techniques to examine if
+								the price of a wine has any impact on its rating. First, we check the correlation score
+								between the two variables. With a correlation score of about 0.45, there are no
+								immediate signs of a relationship. <br> <br />
+								On last check to see if ratings are different between different prices, we split up
+								wines based on their price. Our null hypothesis is that the averge rating of these
+								groups are the same, and our alternative is that they are different. After conducting an
+								ANOVA test, our p-value tells us that we cannot reject our null hypothesis. It appears
+								that price has no impact on ratings.</li>
+							<br />
+							<li><strong>Description vs. Rating:</strong> Can we use NLP to somehow relate rating with
+								the description it gets from the reviewer? First, we clean the text in the description
+								column. We remove punctuation, special characters, and stop words that generate noise in
+								the data. <br> <br />
+								First, we conduct a sort of 'eye test', by generating wordclouds for different segments
+								of ratings. Since ratings are normally distributed, we split them down the middle, and
+								generate two word clouds. When examining these word clouds, there are not any obvious
+								results. We see similar words describing wine that were scored poorly vs. well. They are
+								purely descriptive and do not contain sentiment. <br> <br />
+								Lastly, we build an NLP classifier to see if we can bin wines based on their rating. We
+								split wines by rating using the quartiles of the rating distribution. We label these
+								wines 'fair', 'good', 'great', and 'excellent'. Our TF-IDF Random Forest classifier
+								predicts with a accuracy of about 60%. </li>
+							<br />
+							<li><strong>Thoughts and Conclusion:</strong> Considering the results of the statistical
+								analysis, the natural language processing, and wordclouds, it does not appear that
+								ratings can be explained by this dataset. There may be driving factors that appear in
+								other datasets, such as the conditions each wine was made in, but that would require
+								another dataset. Lastly, it is important to note that ratings are given by a large
+								community of reviews. All of these reviewers have their own thoughts and preferences,
+								and therefore are biased. I wonder if wine rating can even be explained by a dataset
+								similar to this one.</li>
+							<br />
+							<li><strong>What I Would Do Next:</strong> If I were to continue this analysis, I would
+								investigate the relationship between ratings and countries. However, there is a vast
+								amount of countries and regions in this dataset. With that in mind, this analysis would
+								need to point in certain and specific direction. It would need to ask questions such as,
+								"Is there a difference between the ratings of the United States, France, and Germany?"
+								<br> <br /> I would be interested in investigating other datasets to find out what
+								really drives the ratings of wines, and if it can even be represented in a dataset.
+							</li>
+						</ol>
+
+					</div>
+				</div>
+
+				<hr class="major" />
+
+
+				<!-- Buttons -->
+				<h3>Link to Code and Documentation</h3>
+				<ul class="actions">
+					<li><a href="https://github.com/adavis081/Wine-Reviews" class="button primary">Click Here</a></li>
+				</ul>
+
+
+
+				</section>
+
+			</div>
+		</div>
+
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+
+				<!-- Search -->
+				<section id="search" class="alt">
+					<form method="post" action="#">
+						<input type="text" name="query" id="query" placeholder="Search" />
+					</form>
+				</section>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<header class="major">
+						<h2>Menu</h2>
+					</header>
+					<ul>
+						<li><a href="index.html">Homepage</a></li>
+						<!--<li><a href="generic.html">Generic</a></li>
+						<li><a href="elements.html">Elements</a></li> -->
+						<li>
+							<span class="opener">Projects</span>
+							<ul>
+								<li><a href="project1.html">Wine Reviews Project</a></li>
+							</ul>
+					</ul>
+				</nav>
+
+
+				<!-- Section -->
+				<section>
+					<header class="major">
+						<h2>Get in touch</h2>
+					</header>
+					<p>Feel free to reach out!</p>
+					<ul class="contact">
+						<li class="icon solid fa-envelope"><a href="#">adavisnss@gmail.com</a></li>
+						<!-- <li class="icon solid fa-phone">(215) 622-8587</li> -->
+						<li class="icon solid fa-home">Washington, D.C., United States<br />
+						</li>
+					</ul>
+				</section>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a
+							href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5
+							UP</a>.</p>
+				</footer>
+
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
