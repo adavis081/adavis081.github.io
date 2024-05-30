@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<head>
+	<title>Alex Davis' DS Portfolio</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+
+				<!-- Header -->
+				<header id="header">
+					<a href="index.html" class="logo"><strong>Portfolio</strong> </a>
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/alexdavis2020/" class="icon brands fa-linkedin"><span
+									class="label">fa-linkedin</span></a></li>
+						<li><a href="https://github.com/adavis081" class="icon brands fa-github"><span
+									class="label">fa-github</span></a></li>
+					</ul>
+				</header>
+
+				<!-- Content -->
+
+				<header class="main">
+					<h1>Credit Classification</h1>
+				</header>
+
+
+
+				<!-- Content -->
+				<h2 id="content">Project Overview</h2>
+				<p><span class="image left"><img src="images\credit.jpg" alt="" /></span>This project follows the process of ingesting, cleaning, and analyzing customer credit
+				data to build a classification model that predicts credit status. This dataset contains many features pertaining to one's credit,
+				such as income, debt, age of accounts, number of accounts, etc. This project starts with rigorous preprocessing to prepare the data, continues with data mining 
+				and feature engineering, and concludes with training and testing a machine learning classification algorithm. The purpose of this project is not only to build an adequate model, but also 
+				to see what insights we can gain about this problem space.
+				</p>
+
+
+				<br />
+				<section>
+					<h4>Data Description</h4>
+					<div class="table-wrapper">
+						<table class="alt">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Description</th>
+									<th>Type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>ID</td>
+									<td>A unique identifier for each observation</td>
+									<td>Hash</td>
+								</tr>
+								<tr>
+									<td>Customer_ID</td>
+									<td>A unique identifier for each customer</td>
+									<td>Hash</td>
+								</tr>
+								<tr>
+									<td>Age</td>
+									<td>Age of the customer</td>
+									<td>Int</td>
+								</tr>
+								<tr>
+									<td>Occupation</td>
+									<td>Current job of the customer</td>
+									<td>String</td>
+								</tr>
+								<tr>
+									<td>Annual_Income</td>
+									<td>Annual income of the customer</td>
+									<td>Int</td>
+								</tr>
+								<tr>
+									<td>Monthly_Income</td>
+									<td>Monthly income of the customer</td>
+									<td>Int</td>
+								</tr>
+								<tr>
+									<td>Num_Bank_Account</td>
+									<td>Number of open bank accounts under the customer's name</td>
+									<td>Int</td>
+								</tr>
+								<tr>
+									<td>Num_Credit_Cards</td>
+									<td>Number of open credit cards under the customer's name</td>
+									<td>Int</td>
+								</tr>
+								<tr>
+									<td>Interest_Rate</td>
+									<td>Average interest rate under the customer's loans</td>
+									<td>Int</td>
+								</tr>
+								<tr>
+									<td>Num_of_Loan</td>
+									<td>Number of Loans under the customer's name</td>
+									<td>Int</td>
+								</tr>
+								<tr>
+									<td>Type_of_Loan</td>
+									<td>The type of loans</td>
+									<td>Categorical</td>
+								</tr>
+								<tr>
+									<td>Num_of_Delayed_Payments</td>
+									<td>Number of payments a customer has not paid on time</td>
+									<td>Int</td>
+								</tr>
+								<tr>
+									<td>Num_Credit_Inquires</td>
+									<td>Number of times a customer's credit has been inquired about in the past 2 years</td>
+									<td>Int</td>
+								</tr>
+								<tr>
+									<td>Credit_Mix</td>
+									<td>General rating on how well mixed the customer's credit accounts are</td>
+									<td>Categorical</td>
+								</tr>
+								<tr>
+									<td>Outstanding_Debt</td>
+									<td>Total debt for each customer</td>
+									<td>Int</td>
+								</tr>
+								<tr>
+									<td>Credit_Utilization_Ratio</td>
+									<td>A customer's utilized credit to available credit ratio</td>
+									<td>Int</td>
+								</tr>
+								<tr>
+									<td>Credit_History_Age</td>
+									<td>Average age of a customer's credit accounts</td>
+									<td>Categorical</td>
+								</tr>
+								<tr>
+									<td>Monthly_Balance</td>
+									<td>Total spent each month by the customer</td>
+									<td>Int</td>
+								</tr>
+								<tr>
+									<td>Credit_Score</td>
+									<td>General rating of the customer's credit score</td>
+									<td>Categorical</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</section>
+
+
+				<hr class="major" />
+
+				<h3>Results, Insights, and Lessons Learned</h3>
+				<div class="row">
+					<div class="content">
+
+
+						<ol>
+							<li><strong>Data Preparation:</strong><br> <br /> 
+								The initial dataset requires a lot of pre-processing 
+								before it is ready to model. The data has a number of problems, such as incorrect 
+								data types, data errors, lack of standardization, and irrelevant information.<br> <br />
+								First, we explore the data and drop information that will not add value, such as
+								pre-generated IDs, PPI such as social security numbers, and any unstructured text. Also, we 
+								examine the data types and cast the correct types if needed. Some text is present in features that 
+								are numerical, so regular expressions are used to remove text from these features to enable casting.
+								<br> <br />
+								The major challenge is correcting data entry errors. These are likely produced by a lack of data validation.
+								For each feature, we examine the distribution to identify and remove outliers. For example, the 'Age' feature contains 
+								values well above 500, which can be dropped. However, there are many other data errors that are more difficult
+								to detect. To fix these, for each feature, we create a look-up table that lists the mean or mode of that feature for each customer. We can use 
+								these look-up tables to replace the observations where the errors occur. This process is repeated several times
+								until all features are standardized and free of outliers and/or errors.
+							</li>
+							<br />
+							<li><strong>Feature Engineering:</strong><br> <br /> 
+								Now that we have a 'clean' dataset, we can perform analyses to
+								determine which features will be valuable to a classification model. <br> <br />
+								First, we need to convert our categorical features into numerical features so we can analyze them. To do this, 
+								we can simply encode these features, which creates a new binary (1 or 0) feature for each value of that categorical feature.
+								We can then drop the original categorical variables. <br> <br />
+								Next, we conduct variance inflation factor (VIF) analysis to identify occurrences of multicollinearity. It is important to 
+								identify and reduce multicollinearity as much as possible to reduce noise (i.e. the number of features) and improve the
+								interpretability of the model. We use a combination of VIF scores and correlation matrices to identify features that are highly
+								correlated with one another. We can then drop or combine these features to remove the multicollinearity. It is not feasible to completely remove multicollinearity, so we reduce it as much as possible 
+								without removing too much value from the dataset.
+							</li>
+							<br />
+							<li><strong>Model Selection:</strong><br> <br /> 
+								Next, we select to model to move forward with our classification problem.
+								Model selection can be difficult and time consuming, as there are many models to test, and there could be
+								several models that can sufficiently explain credit score. <br> <br />
+								Luckily, pycaret offers a solution where you can quickly test several different models to get a rough
+								idea of their performance using default parameters. We can use this offering to see which models perform well
+								by evaluating different metrics such as accuracy, area under the curve (AUC), F1 score, and more. <br> <br />
+								With the help of pycaret, we determine that the random forest classifier will outperform most others. The extra-trees
+								classifier and light-gradient boosting machine model also show potential. We will move forward with the 
+								random forest classifier, but have other models to experiment with if we run into issues. </li>
+							<br />
+							<li><strong>Model Creation:</strong><br> <br /> 
+								The random forest classifier with default parameters produces both an
+								accuracy and F1 score of nearly 80%, which is generally very good. To try to improve the performance, 
+								we try both hyperparameter tuning and dimensionality reduction. <br> <br />
+								For hyperparameter tuning, we conduct a wide grid search to find the optimal value for each parameter. However, 
+								this results in a lower performance. It is unlikely that we lack enough data, so it is not clear why these new
+								parameters made the model worse. Regardless, we revert back to the starting parameters. Next, we try dimensionality reduction through principal component analysis (PCA).
+								This also negatively affected the model. This likely tells us that complexity is not an issues here, and reducing 
+								the dimensions lost too much of the variance in the explanatory features. Since these attempts did not help, we
+								save our final model as the random forest classifier with default parameters.
+							 </li>
+							<br />
+							<li><strong>Thoughts and Lessons Learned:</strong><br> <br /> 
+								Considering the heavy amount of data preprocessing that was needed,
+								I fear that value could have been lost. This is a reminder of how important data processes are in retaining 
+								value through the production of high-quality data. Implementing proper data governance, validation, and quality assurance is
+								vital in supporting data scientists and analysts in extracting the value they seek.<br> <br />
+								As per the model we have created, we achieved both an accuracy and F1 score of approximately 80%. Would this model
+								be used in an interface to predict customer credit scores? Probably not. However, this model is good enough to help
+								us understand the driving factors of credit score. Though feature importance analysis, we see how outstanding debt, missed
+								payments, and interest rates greatly affect the score, while other features affect it less. 
+								</li>
+							<br />
+							<li><strong>Next Steps:</strong><br> <br /> 
+								If I were to continue the pursuit of building a sufficient model, I would
+								look for similar datasets with similar features. I would use the processes I created with this dataset as a pipeline
+								for additional credit data, and see if I get similar results or better. This could help us better understand what information
+								is needed and valuable to accurately predict one's credit score. As well, there can always be more time spent investigating how to improve the model
+								through other means, such as data transformation and hyperparameter tuning.
+							</li>
+						</ol>
+
+					</div>
+				</div>
+
+				<hr class="major" />
+
+
+				<!-- Buttons -->
+				<h3>Link to Code and Documentation</h3>
+				<ul class="actions">
+					<li><a href="https://github.com/adavis081/credit_project" class="button primary">Click Here</a></li>
+				</ul>
+
+
+
+				</section>
+
+			</div>
+		</div>
+
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+
+				<!-- Menu -->
+				<nav id="menu">
+					<header class="major">
+						<h2>Menu</h2>
+					</header>
+					<ul>
+						<li><a href="index.html">Homepage</a></li>
+						<!--<li><a href="generic.html">Generic</a></li>
+						<li><a href="elements.html">Elements</a></li> -->
+						<li>
+							<span class="opener">Projects</span>
+							<ul>
+								<li><a href="project1.html">Wine Reviews Project</a></li>
+								<li><a href="project2.html">Credit Classification Project</a></li>
+							</ul>
+					</ul>
+				</nav>
+
+
+				<!-- Section -->
+				<section>
+					<header class="major">
+						<h2>Get in touch</h2>
+					</header>
+					<p>Feel free to reach out!</p>
+					<ul class="contact">
+						<li class="icon solid fa-envelope"><a href="mailto: adavisnss@gmail.com">adavisnss@gmail.com</a></li>
+						<!-- <li class="icon solid fa-phone">(215) 622-8587</li> -->
+						<li class="icon solid fa-home">Washington, D.C., United States<br />
+						</li>
+					</ul>
+				</section>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a
+							href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5
+							UP</a>.</p>
+				</footer>
+
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
